@@ -42,7 +42,7 @@ module test_TPU;
 		// Add stimulus here
 		always
 		#250 clk=~clk;
-		
+		// Add weights and inputs for 16x16
 	initial begin
 		@(posedge clk);
 		reset = 1;
