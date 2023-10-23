@@ -1,8 +1,6 @@
 `timescale 1ns / 1ps
 
-// sample testbench for a 4X4 Systolic Array
-
-module tb_TPU;
+module tb_Syn;
 
 	// Inputs
 	reg clk;
@@ -33,7 +31,7 @@ module tb_TPU;
 		wt_arr = 0;
 		reset = 0;
 		// Wait 100 ns for global reset to finish
-		#5000;
+		#1000;
        end
 		// Add stimulus here
 		always
