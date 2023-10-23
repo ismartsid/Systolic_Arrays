@@ -2,7 +2,7 @@
 
 // Systolic Array top-level module. 
 
-module MMU #(parameter bit_width=8, acc_width=16, size=4)
+module MMU #(parameter bit_width=8, acc_width=16, size=16)
 (		input clk, input reset, input  control,
 		input [bit_width-1:0]data_arr[size-1:0], 
 		input [bit_width-1:0]wt_arr[size-1:0], 
