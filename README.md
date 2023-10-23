@@ -4,10 +4,14 @@ This project implements a 16x16 systolic array for matrix multiplication in Veri
 
 ## Project Files
 **MAC.v** - MAC unit implementation
+
 **ROW.v** - Row unit with 16 MACs
+
 **MMU.v** - Top level 16x16 systolic array
-**MMU_test.v** - Testbench for RTL simulation
-**Syn_test.v** - Testbench for gate-level simulation
+
+**RTL_testbench.v** - Testbench for RTL simulation
+
+**Synthesis_testbench.v** - Testbench for gate-level simulation
 
 ## Modules
 The systolic array design consists of the following modules:
