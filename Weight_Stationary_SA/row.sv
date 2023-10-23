@@ -1,4 +1,4 @@
-module row #(parameter size=4, bit_width=8, acc_width=16)(
+module row #(parameter size=16, bit_width=8, acc_width=16)(
 		input clk, input reset, input control,
 		input [bit_width-1:0]data_in,
 		input [acc_width-1:0] acc_in[size-1:0],
