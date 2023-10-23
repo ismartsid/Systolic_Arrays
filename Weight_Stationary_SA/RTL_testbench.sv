@@ -1,6 +1,6 @@
 
 `timescale 1ns / 1ns
-parameter bit_width=8, acc_width=16, size=4;
+parameter bit_width=8, acc_width=16, size=16;
 // sample testbench for a 4X4 Systolic Array
 
 module test_TPU;
@@ -31,13 +31,13 @@ module test_TPU;
 		clk = 1;
 		control = 0;
 		reset = 0;
-		for(int i = 1; i < 5; i++)
-			data_arr[i-1] = 0;
-		for(int i = 1; i < 5; i++)
-			wt_arr[i-1] = 0;
+		for(int i = 0; i < size; i++)
+			data_arr[i] = 0;
+		for(int i = 0; i < size; i++)
+			wt_arr[i] = 0;
 		
 		// Wait 100 ns for global reset to finish
-		#5000;
+		#1000;
        end
 		// Add stimulus here
 		always
@@ -47,25 +47,25 @@ module test_TPU;
 		@(posedge clk);
 		reset = 1;
 		control=1;
-		wt_arr[0] = 8'h4;
+	wt_arr[0] = 8'h4;
         wt_arr[1] = 8'h3;
         wt_arr[2] = 8'h2;
         wt_arr[3] = 8'h5;
 		
 		@(posedge clk);
-		wt_arr[0] = 8'h3;
+	wt_arr[0] = 8'h3;
         wt_arr[1] = 8'h2;
         wt_arr[2] = 8'h1;
         wt_arr[3] = 8'h3;
 		
 		@(posedge clk);
-		wt_arr[0] = 8'h2;
+	wt_arr[0] = 8'h2;
         wt_arr[1] = 8'h1;
         wt_arr[2] = 8'h4;
         wt_arr[3] = 8'h7;
 
 		@(posedge clk);
-		wt_arr[0] = 8'h3;
+	wt_arr[0] = 8'h3;
         wt_arr[1] = 8'h4;
         wt_arr[2] = 8'h2;
         wt_arr[3] = 8'h1;
@@ -74,7 +74,7 @@ module test_TPU;
 		@(posedge clk);
 
 		control=0;
-		data_arr[0] = 8'h1;
+	data_arr[0] = 8'h1;
         data_arr[1] = 8'h0;
         data_arr[2] = 8'h0;
         data_arr[3] = 8'h0;
@@ -82,7 +82,7 @@ module test_TPU;
 		
 		
 		@(posedge clk);
-		data_arr[0] = 8'h2;
+	data_arr[0] = 8'h2;
         data_arr[1] = 8'h1;
         data_arr[2] = 8'h0;
         data_arr[3] = 8'h0;
@@ -90,31 +90,31 @@ module test_TPU;
 		
 		
 		@(posedge clk);
-		data_arr[0] = 8'h0;
+	data_arr[0] = 8'h0;
         data_arr[1] = 8'h2;
         data_arr[2] = 8'h1;
         data_arr[3] = 8'h0;
 		
 		@(posedge clk);
-		data_arr[0] = 8'h0;
+	data_arr[0] = 8'h0;
         data_arr[1] = 8'h1;
         data_arr[2] = 8'h1;
         data_arr[3] = 8'h0;
 		
 		@(posedge clk);
-		data_arr[0] = 8'h0;
+	data_arr[0] = 8'h0;
         data_arr[1] = 8'h2;
         data_arr[2] = 8'h3;
         data_arr[3] = 8'h2;
 		
 		@(posedge clk);
-		data_arr[0] = 8'h0;
+	data_arr[0] = 8'h0;
         data_arr[1] = 8'h0;
         data_arr[2] = 8'h1;
         data_arr[3] = 8'h4;
 		
 		@(posedge clk);
-		data_arr[0] = 8'h0;
+	data_arr[0] = 8'h0;
         data_arr[1] = 8'h0;
         data_arr[2] = 8'h0;
         data_arr[3] = 8'h5;
