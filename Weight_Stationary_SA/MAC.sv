@@ -1,9 +1,9 @@
 `timescale 1ns / 1ns
 
 module MAC #(parameter bit_width=8, acc_width=16)(
-	input clk,
-	input control, // control signal used to indidate if it is weight loading or not
-	input reset,
+	input clk, // Clock
+	input control, // control signal used to indicate if it is weight loading or not, control 1 for loading weights
+	input reset, // Negative Reset
 	input [acc_width-1:0] acc_in, // accumulation in
 	input [bit_width-1:0] data_in,  // data input or activation in
 	input [bit_width-1:0] wt_path_in,   // weight data in
@@ -16,7 +16,7 @@ module MAC #(parameter bit_width=8, acc_width=16)(
 	reg [bit_width-1:0] wt_path;
 	wire [acc_width-1:0] acc_sum;
 	
-	always @(posedge clk, negedge reset)
+	always @(posedge clk or negedge reset) //data path
 	begin
 	if (!reset) begin 
 		data_out <= 0;
