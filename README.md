@@ -25,13 +25,5 @@ The design was validated through:
 
 - Gate-level post-synthesis simulation using a separate testbench due to differences in how multidimensional arrays are represented.
 
-## Synthesis
-The design was synthesized using Synopsys DC Compiler with the ASAP7 PDK.
-
-### Results
-- Clock speed: 500 MHz
-- Power: 0.954 mW
-- Area: 0.009 mm^2
-
 ## Scalability 
 The design is easily scalable to larger sizes like 256x256 by modifying the 'size' parameter. Generate blocks in Verilog can be used to instantiate the repetitive structures.
