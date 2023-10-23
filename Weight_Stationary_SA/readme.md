@@ -1,6 +1,6 @@
 # Weight Stationary Systolic Array Implementation
 
-This project implements a 16x16 systolic array for matrix multiplication in Verilog HDL.
+This project implements a 16x16 weight stationary systolic array for matrix multiplication in Verilog HDL.
 
 ## Project Files
 **MAC.v** - MAC unit implementation
