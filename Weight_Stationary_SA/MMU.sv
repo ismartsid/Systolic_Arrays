@@ -2,19 +2,22 @@
 
 // Systolic Array top-level module. 
 
-module MMU #(parameter bit_width=8, acc_width=16, size=16)
-(		input clk, input reset, input  control,
-		input [bit_width-1:0]data_arr[size-1:0], 
-		input [bit_width-1:0]wt_arr[size-1:0], 
-		output [acc_width-1:0]acc_out[size:0][size-1:0],
-		output reg [acc_width-1:0]acc_out_final[size-1:0]
+module MMU #(parameter bit_width=8, acc_width=16, size=16) // bit_width = number of bits for each data(input); acc_width = number of bits for accumilation (typically 2*bit_width); size = size of Systolic Array
+(		input clk, // Clock
+ 		input reset, // Negative Reset
+ 		input  control, // control signal used to indicate if it is weight loading or not, control 1 for loading weights
+		input [bit_width-1:0]data_arr[size-1:0], // data input or activation in
+		input [bit_width-1:0]wt_arr[size-1:0], // weight data in
+ 		output [acc_width-1:0]acc_out[size:0][size-1:0], // activation out for each row unit
+ 		output reg [acc_width-1:0]acc_out_final[size-1:0] // activation out for the last row unit
 );	
 
+	
 wire [bit_width-1:0]wt_path[size:0][size-1:0];	
 
 assign acc_out[0][size-1:0] = '{default:0};
 
-generate
+generate //Generate block replicates the row unit size times.
 genvar i; 
 for(i=0;i<size;i = i + 1)
 begin
