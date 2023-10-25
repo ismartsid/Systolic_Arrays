@@ -12,7 +12,7 @@ module row #(parameter size=16, bit_width=8, acc_width=16)// bit_width = number 
 
 wire [bit_width-1:0] data[size:0];
 
-generate
+generate //Generate block repeats the MAC unit size times.
 genvar i;
 for (i=0;i<size;i = i + 1) begin
 	MAC M(.clk(clk),.control(control),.reset(reset),.data_in(data[i]),.wt_path_in(wt_path_in[i]), 
