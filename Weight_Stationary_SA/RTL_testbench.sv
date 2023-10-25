@@ -1,7 +1,6 @@
 
 `timescale 1ns / 1ns
 parameter bit_width=8, acc_width=16, size=16;
-// sample testbench for a 4X4 Systolic Array
 
 module test_TPU;
 
@@ -43,6 +42,8 @@ module test_TPU;
 		always
 		#250 clk=~clk;
 		// Add weights and inputs for 16x16
+
+	// sample testbench for a 4X4 Systolic Array
 	initial begin
 		@(posedge clk);
 		reset = 1;
