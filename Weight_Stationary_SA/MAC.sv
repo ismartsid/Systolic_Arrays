@@ -1,6 +1,7 @@
 `timescale 1ns / 1ns
 
-module MAC #(parameter bit_width=8, acc_width=16)(
+module MAC #(parameter bit_width=8, acc_width=16) // bit_width = number of bits for each data(input); acc_width = number of bits for accumilation (typically 2*bit_width)
+	(
 	input clk, // Clock
 	input control, // control signal used to indicate if it is weight loading or not, control 1 for loading weights
 	input reset, // Negative Reset
@@ -10,7 +11,7 @@ module MAC #(parameter bit_width=8, acc_width=16)(
 	output reg [acc_width-1:0] acc_out,  // accumulation out
 	output reg [bit_width-1:0] data_out,    // activation out
 	output [bit_width-1:0] wt_path_out		// weight data out
-	 );
+	);
 	 
 	wire [acc_width-1:0] product;
 	reg [bit_width-1:0] wt_path;
