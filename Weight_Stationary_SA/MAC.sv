@@ -26,7 +26,7 @@ module MAC #(parameter bit_width=8, acc_width=16)(
 	else begin
 		data_out <= data_in;
 		acc_out <= acc_sum;
-		if (control)
+		if (control) // control = 1, load wait; control =0, reuse the loaded waits.
 			wt_path <= wt_path_in;
 		else
 			wt_path <= wt_path;
@@ -34,8 +34,8 @@ module MAC #(parameter bit_width=8, acc_width=16)(
 
   end
 
- assign product = data_in * wt_path;
+ assign product = data_in * wt_path; // Multiply
  assign wt_path_out = wt_path;
- assign acc_sum = product + acc_in;
+ assign acc_sum = product + acc_in; // Accumilate
 
 endmodule
