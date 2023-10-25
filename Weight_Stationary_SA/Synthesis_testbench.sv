@@ -1,16 +1,16 @@
 `timescale 1ns / 1ps
-
+parameter bit_width=8, acc_width=16, size=16;
 module tb_Syn;
 
 	// Inputs
 	reg clk;
 	reg control;
-	reg [31:0] data_arr;
-	reg [31:0] wt_arr;
+	reg [(bit_width*size)-1:0] data_arr;
+	reg [(bit_width*size)-1:0] wt_arr;
 	reg reset;
-	reg [63:0]acc_out_final;
 	// Outputs
-	wire [127:0] acc_out;
+	reg [(acc_width*size)-1:0]acc_out_final;
+	wire [((acc_width*size)*(size+1))-1:0] acc_out;
 
 	// Instantiate the Unit Under Test (UUT)
 	MMU uut (
@@ -36,7 +36,7 @@ module tb_Syn;
 		// Add stimulus here
 		always
 		#250 clk=!clk;
-		
+		// sample testbench for a 4X4 Systolic Array
 		initial begin
 		@(posedge clk);
 		control=1;
